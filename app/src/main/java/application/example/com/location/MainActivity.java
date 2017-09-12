@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             if(ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
 
 
-                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+
             }else {
 
                 // No explanation needed, we can request the permission.
@@ -85,8 +85,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 // app-defined int constant. The callback method gets the
                 // result of the request.
             }
+            return;
 
         }
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
 
     }
@@ -97,11 +99,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         switch (requestCode){
             case MY_PERMISSIONS:{
                 if(grantResults.length>0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    
+
 
 
 
                 }
+                else {
+
+                }
+                return;
             }
         }
     }
